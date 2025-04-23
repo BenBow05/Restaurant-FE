@@ -14,7 +14,7 @@ const recipes = [
     description: "A vibrant salsa made with fresh tomatoes, perfect for using your garden harvest.",
     prepTime: "15 mins",
     difficulty: "Easy",
-    plantStage: "Brunch",
+    type: "Brunch",
     plantName: "Tomato",
     image: "/placeholder.svg?height=300&width=400",
     tags: ["tomato", "onion", "cilantro"],
@@ -25,7 +25,7 @@ const recipes = [
     description: "Homemade pesto sauce using fresh basil leaves from your garden.",
     prepTime: "20 mins",
     difficulty: "Medium",
-    plantStage: "Dinner",
+    type: "Dinner",
     plantName: "Basil",
     image: "/placeholder.svg?height=300&width=400",
     tags: ["basil", "garlic", "pine nuts"],
@@ -36,7 +36,7 @@ const recipes = [
     description: "Crispy fritters made with garden-fresh zucchini and herbs.",
     prepTime: "25 mins",
     difficulty: "Medium",
-    plantStage: "Appetizers",
+    type: "Appetizers",
     plantName: "Zucchini",
     image: "/placeholder.svg?height=300&width=400",
     tags: ["zucchini", "herbs"],
@@ -47,7 +47,7 @@ const recipes = [
     description: "A nutritious salad featuring homegrown microgreens and a light vinaigrette.",
     prepTime: "10 mins",
     difficulty: "Easy",
-    plantStage: "Brunch",
+    type: "Brunch",
     plantName: "Microgreens",
     image: "/placeholder.svg?height=300&width=400",
     tags: ["microgreens", "lettuce"],
@@ -58,7 +58,7 @@ const recipes = [
     description: "Flavorful olive oil infused with garden herbs, perfect for dipping or cooking.",
     prepTime: "5 mins + infusion time",
     difficulty: "Easy",
-    plantStage: "Appetizers",
+    type: "Appetizers",
     plantName: "Herbs",
     image: "/placeholder.svg?height=300&width=400",
     tags: ["herbs", "rosemary", "thyme"],
@@ -69,7 +69,7 @@ const recipes = [
     description: "Garden bell peppers stuffed with a savory mixture of rice, vegetables, and herbs.",
     prepTime: "40 mins",
     difficulty: "Medium",
-    plantStage: "Appetizers",
+    type: "Appetizers",
     plantName: "Bell Pepper",
     image: "/placeholder.svg?height=300&width=400",
     tags: ["bell pepper", "rice", "herbs"],
@@ -81,7 +81,7 @@ export default function MenuPage() {
   const [selectedRecipe, setSelectedRecipe] = useState<any | null>(null)
   const [isDialogOpen, setIsDialogOpen] = useState(false)
 
-  const filteredRecipes = activeStage ? recipes.filter((recipe) => recipe.plantStage === activeStage) : recipes
+  const filteredRecipes = activeStage ? recipes.filter((recipe) => recipe.type === activeStage) : recipes
 
   const handleRecipeClick = (recipe: any) => {
     setSelectedRecipe(recipe)
@@ -211,7 +211,7 @@ export default function MenuPage() {
             <div className="relative">
               <img src={recipe.image || "/placeholder.svg"} alt={recipe.name} className="w-full h-48 object-cover" />
               <div className="absolute top-2 right-2 bg-green-500 text-white px-3 py-1 rounded-full text-xs font-medium">
-                {/* {recipe.plantStage} */}PLACEHOLDER
+                {/* {recipe.type} */}PLACEHOLDER
               </div>
             </div>
             <CardContent className="p-6">
@@ -259,7 +259,7 @@ export default function MenuPage() {
             name: selectedRecipe.name,
             description: selectedRecipe.description,
             plantName: selectedRecipe.plantName,
-            growthStage: selectedRecipe.plantStage,
+            growthStage: selectedRecipe.type,
           }}
         />
       )}
